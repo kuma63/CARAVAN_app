@@ -1,9 +1,11 @@
 class BlogsController < ApplicationController
   def index
+    @blogs=Blog.all
   end
 
   def show
-  end
+    @blog=Blog.find(params[:id])
+  end 
 
   def new
     @blog=Blog.new
@@ -12,8 +14,8 @@ class BlogsController < ApplicationController
   def create
     blog=Blog.new(blog_params)
     blog.save
-    redirect_to blogs_path
-  end 
+    redirect_to blog_path(blog.id)
+  end  
 
   def edit
   end
